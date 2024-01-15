@@ -1,11 +1,24 @@
 import PySimpleGUI as sg
+import os
 
 sg.theme('DarkAmber')   # Add a touch of color
 # All the stuff inside your window.
-layout = [  [sg.Text('Some text on Row 1')],
-            [sg.Text('Enter something on Row 2'), sg.InputText()],
+layout = [  [sg.Text('Clock singal')],
+            [sg.Text("Switches")],
+            [sg.Text("LEDs")],
+            [sg.Text("7 segment display")],
+            [sg.Text("Buttons")],
             [sg.Button('Ok'), sg.Button('Cancel')] 
          ]
+
+if not os.path.exists("output"):
+    os.makedirs("output")
+
+with open("output/constraints.xdc", "w") as file:
+    file.write("This is a new text file.\n")
+    file.write("line 2")
+    file.close()
+
 
 # Create the Window
 window = sg.Window('Python constrainsfile creator', layout)
